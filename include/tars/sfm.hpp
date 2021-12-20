@@ -172,7 +172,6 @@ public:
 	double getAgentsDetectionRange() const {return agentsDetectionRange;}
 	void updateSensors(const Map& map,const std::vector<Agent*>& agents);
 	void update(double dt, const Map& map, const std::vector<Agent*>& agents);
-	void addScanObserver(std::vector<float>& scanObserver);
 	const std::vector<unsigned>& getAgentsDetected() const {return agentsDetected;}
 private:
 	utils::Vector2d goal;
@@ -186,25 +185,22 @@ private:
 	utils::Vector2d lastScanPosition;
 	utils::Angle lastScanYaw;
 	std::vector<float> scan;
-	std::vector<std::vector<float>*> scanObservers;
 	std::vector<unsigned> agentsDetected;
 };
 
-inline
-void Robot::addScanObserver(std::vector<float>& scanObserver) {
-	scanObserver.resize(scan.size());
-	scanObservers.push_back(&scanObserver);
-}
 
 inline
 void Robot::updateSensors(const Map& map, const std::vector<Agent*>& agents) {
+	
 	if (lastScanPosition != position || lastScanYaw != yaw) {	
+		
 		lastScanPosition = position;
 		lastScanYaw = yaw;
 		double angle = yaw.toRadian() - M_PI;
 		utils::Vector2d u,p;
 		double d;
 		double obstacleRadius = map.getResolution()/2;
+		
 		for (unsigned i=0;i<scan.size();i++) {
 			u.set(std::cos(angle), std::sin(angle));
 			p = position + u*radius;
@@ -215,12 +211,10 @@ void Robot::updateSensors(const Map& map, const std::vector<Agent*>& agents) {
 				d += obstacleRadius;
 			}
 			scan[i] = std::max(radius,std::min(d,scanRange));
-			for (unsigned j=0;j<scanObservers.size();j++) {
-				(*scanObservers[j])[i] = scan[i];
-			}
 			angle += scanAngleIncrement;
 		}	
 	}
+	
 	agentsDetected.clear();
 	for (unsigned i = 0; i< agents.size();i++) {
 		if ((position - agents[i]->getPosition()).norm() < agentsDetectionRange &&
@@ -228,6 +222,7 @@ void Robot::updateSensors(const Map& map, const std::vector<Agent*>& agents) {
 			agentsDetected.push_back(i);
 		}
 	}
+	
 }
 
 inline

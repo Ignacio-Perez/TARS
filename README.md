@@ -78,10 +78,10 @@ You can launch a test scenario as follows:
 
 ## Messages
 * **tars/Vector2DMsg**
- - Structure:
-   - float64 x
-   - float64 y
- - Description: Generic messsage for two-dimensional vectors
+  - Structure:
+    - float64 x
+    - float64 y
+  - Description: Generic messsage for two-dimensional vectors
 
 * **tars/ForceMsg**
   - Structure:
@@ -124,9 +124,50 @@ You can launch a test scenario as follows:
 
 ## TF
 
+The next TF diagram shows an example for two robots called 01 and 02. 
 
+![TF](pictures/tf.png)
 
 ## The scenario file
+
+The scenario file follows a pseudo YAML format with the next items:
+
+* **freq**: The execution frequency of the simulator.
+* **map**: The YAML map file.
+* **forceFactorDesired**: SFM parameter.
+* **forceFactorObstacle**: SFM parameter.
+* **forceFactorSocial**: SFM parameter.
+* **obstacleReadings**: Number of obstacle readings to be considered in order to compute the SFM obstacle force.
+* **lambda**: SFM parameter.
+* **gamma**: SFM parameter.
+* **n1**: SFM parameter.
+* **n2**: SFM parameter.
+* **relaxationTime**: SFM parameter.
+* **robot**: A robot agent to be included with the next parameters:
+   - id
+   - desiredVelocity
+   - radius
+   - scan readings
+   - scan range
+   - agent detection range
+   - x
+   - y
+   - yaw
+* **node**: A node in the graph with the next parameters:
+  - id
+  - x
+  - y
+* **goal**: A goal (point of interest) in the graph with the next parameters:
+  - id 
+  - x
+  - y
+  - orientation
+* **human**: A human agent with the next parameters:
+  - id
+  - desiredVelocity
+  - List of points of interest
+
+For an example scenario file, see *scenarios/ccia_h.scenario.yaml*    
 
 
 

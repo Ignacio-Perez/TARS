@@ -67,6 +67,8 @@ private:
 	ros::Publisher trackingPub;
 	ros::Subscriber cmdVelSubscriber;
 	sensor_msgs::LaserScan scan;
+	utils::Vector2d lastScanPosition;
+	utils::Angle lastScanYaw;
 };
 
 inline
@@ -108,7 +110,7 @@ ROSInterface::ROSInterface(Robot* robot, ros::NodeHandle& n, ros::NodeHandle& pn
 	scan.scan_time = 1.0/TARS.getFreq();
 	scan.range_min = robot->getRadius();
 	scan.range_max = robot->getScanRange();
-	robot->addScanObserver(scan.ranges);
+
 }
 
 inline
@@ -164,6 +166,11 @@ void ROSInterface::publish(const ros::Time& currentTime) {
 	odom.twist.twist.angular.z = robot->getAngVel();
 	odomPublisher.publish(odom);
 	scan.header.stamp = currentTime;
+	if (lastScanPosition != robot->getPosition() || lastScanYaw != robot->getYaw()) {	
+		lastScanPosition = robot->getPosition();
+		lastScanYaw =robot->getYaw();
+		scan.ranges = robot->getScan();
+	}
 	scanPublisher.publish(scan);
 	tars::AgentsMsg msg;
 	msg.header.frame_id = "map";
@@ -211,10 +218,7 @@ void ROSInterface::publish(const ros::Time& currentTime) {
 		marker.pose.orientation.w = 1.0;			
 	    markers.markers.push_back(marker);
 	}
-
-
 	trackingVisPub.publish(markers);
-
 }
 
 inline
