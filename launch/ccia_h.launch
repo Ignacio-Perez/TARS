@@ -1,5 +1,4 @@
 <!-- -*- mode: XML -*- -->
-
 <launch>
 	<master auto="start"/>
 	<node pkg="map_server" type="map_server" name="map_server" args="$(find tars)/scenarios/ccia_h.yaml"/>
