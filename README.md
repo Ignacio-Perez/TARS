@@ -105,22 +105,22 @@ You can launch a test scenario as follows:
   - Description: Message for a running agent. 
 
 * **tars/AgentsMsg**
- - Structure:
-   - std_msgs/Header header
-   - uint32 size
-   - tars/AgentMsg[] agents
+  - Structure:
+    - std_msgs/Header header
+    - uint32 size
+    - tars/AgentMsg[] agents
 
 ## Services
 
 * **/tars/robot_goal**
- - Type: tars/RobotGoalSrv
- - Args: 
+  - Type: tars/RobotGoalSrv
+  - Args: 
     - string id
     - float64 gx  
     - float64 gy
- - Return:
-   - bool error
- - Description: Set the goal (gx,gy) for robot id. Then the SFM forces for such a robot can be computed. It returns true if error, false otherwise.
+  - Return:
+    - bool error
+  - Description: Set the goal (gx,gy) for robot id. Then the SFM forces for such a robot can be computed. It returns true if error, false otherwise.
 
 ## TF
 
@@ -167,7 +167,7 @@ The scenario file follows a pseudo YAML format with the next items:
   - desiredVelocity
   - List of points of interest
 
-For an example scenario file, see *scenarios/ccia_h.scenario.yaml*    
+For an example, see *scenarios/ccia_h.scenario.yaml*    
 
 
 
