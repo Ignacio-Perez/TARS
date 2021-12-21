@@ -52,7 +52,7 @@ public:
 	void update(double dt);
 
 private:
-	Tars() : freq(15.0) {}	
+	Tars() : freq(10.0) {}	
 	void addGoal(const std::string& yaml);
 	static double getDouble(const std::string& yaml);
 	static int getInt(const std::string& yaml);
