@@ -434,6 +434,7 @@ void Agent::computeObstacleForce(const Map& map)
 	forces.obstacleForce.set(0,0);
 	utils::Angle a;
 	utils::Angle offset = utils::Angle::fromDegree(360.0 / (double)params.obstacleReadings);
+	double factor = params.forceFactorObstacle / (double) params.obstacleReadings;
 	for (unsigned i=0;i<params.obstacleReadings;i++) {
 		utils::Vector2d u(a.cos(),a.sin());
 		u*=radius;
@@ -441,7 +442,7 @@ void Agent::computeObstacleForce(const Map& map)
 		utils::Vector2d o = map.getNearestObstacle(p);
 		utils::Vector2d minDiff = position - o;
 		double distance = minDiff.norm() - radius;
-		forces.obstacleForce += params.forceFactorObstacle * std::exp(-distance/params.forceSigmaObstacle) * minDiff.normalized();
+		forces.obstacleForce += factor * std::exp(-distance/params.forceSigmaObstacle) * minDiff.normalized();
 		a+=offset;
 	}
 }
