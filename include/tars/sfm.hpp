@@ -368,7 +368,7 @@ void Human::updatePath() {
 		std::string newNode;
 		double minDist = std::numeric_limits<double>::infinity();
 		for (auto it = graph->getNodes().begin();it!= graph->getNodes().end();++it) {
-			if (map->isReachableInStraightLine(position,it->second)) {
+			if (map->isReachableInStraightLine(position,it->second) && it->first != path.front() && it->first!=goal) {
 				double dist = (position - it->second).norm();
 				if (dist < minDist) {
 					minDist = dist;
@@ -376,7 +376,7 @@ void Human::updatePath() {
 				}
 			}
 		}
-		if (minDist < std::numeric_limits<double>::infinity() && newNode != goal) {
+		if (minDist < std::numeric_limits<double>::infinity()) {
 			for (unsigned i=0;i<edges.size();i++) {
 				graph->dec(edges[i]);
 			}
@@ -387,7 +387,7 @@ void Human::updatePath() {
 				goal = newNode;
 				path.push_back(newNode);
 			}
-		}
+		} 
 	}
 }
 
