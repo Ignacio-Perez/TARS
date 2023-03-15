@@ -1,0 +1,38 @@
+freq: 10.0
+map: ccia_h.yaml
+
+# SFM Params
+forceFactorDesired: 0.8
+forceFactorObstacle: 3.6
+forceSigmaObstacle: 0.2
+forceFactorSocial: 2.2
+obstacleReadings: 8
+lambda: 2.0
+gamma: 0.35
+n1: 2.0
+n2: 3.0
+relaxationTime: 0.5
+
+
+
+
+#laboratorio 1
+goal: ["g32",2,5.6,3.141592654] # Alumno1
+goal: ["g33",2,4.6,3.141592654]
+goal: ["g34",2,3.6,3.141592654]
+goal: ["g35",3,5.6,3.141592654] # Alumno1
+goal: ["g36",3,4.6,3.141592654]
+goal: ["g37",3,3.6,3.141592654] # Alumno2
+goal: ["g38",4,5.6,3.141592654] # Alumno2
+goal: ["g39",4,4.6,3.141592654]
+goal: ["g40",4,3.6,3.141592654] # Alumno1
+goal: ["g41",5,5.6,3.141592654]
+goal: ["g42",5,4.6,3.141592654]
+goal: ["g43",5,3.6,3.141592654] # Alumno3
+goal: ["g44",6,5.6,3.141592654]
+goal: ["g45",6,4.6,3.141592654] # Alumno3
+goal: ["g46",6,3.6,3.141592654]
+
+
+human: ["Alumno01", 0.6, "g32", "g35"]
+

@@ -1,0 +1,141 @@
+freq: 10.0
+map: mapaygoals.yaml
+
+# SFM Params
+forceFactorDesired: 0.8
+forceFactorObstacle: 3.6
+forceSigmaObstacle: 0.2
+forceFactorSocial: 2.2
+obstacleReadings: 8
+lambda: 2.0
+gamma: 0.35
+n1: 2.0
+n2: 3.0
+relaxationTime: 0.5
+
+goal: ["g1", 2.5, 9.55, -1.5708] # mesa mario
+goal: ["g2", 2, 8.8, 0.785398]   # silla mario 1
+goal: ["g3", 3, 8.8, 2.35619]    # silla mario 2
+goal: ["g4", 5.35, 9.55, -1.5708] # mesa alvaro
+goal: ["g5", 7.25, 9.55, -1.5708] # mesa carmen
+goal: ["g6", 6.3, 8.55, 1.5708] # despacho alvaro-carmen
+goal: ["g7", 9.2, 9.55, 0] # mesa fran
+goal: ["g8", 11.1, 9.55, 3.14159] # mesa ignacio
+goal: ["g9", 10.15, 8.55, 1.5708] # despacho fran-ignacio
+goal: ["g10", 13.05, 9.55, 0] # mesa antonio
+goal: ["g11", 14.95, 9.55, 3.14159] # mesa 2 despacho-antonio
+goal: ["g12", 14, 8.55, 1.5708] # despacho antonio
+goal: ["g13", 16.9, 9.55, 0] # mesa felix
+goal: ["g14", 18.8, 9.55, 3.14159] # mesa 2 despacho-felix
+goal: ["g15", 17.85, 8.55, 1.5708] # despacho felix
+goal: ["g16", 20.75, 9.55, 0] # mesa luis
+goal: ["g17", 22.65, 9.55, 3.14159] # mesa david
+goal: ["g18", 21.7, 8.55, 1.5708] # despacho luis-david
+goal: ["g19", 24.6, 9.55, 0] # mesa miguel
+goal: ["g20", 26.5, 9.55, 3.14159] # mesa pedro
+goal: ["g21", 25.55, 8.55, 1.5708] # depacho miguel pedro
+goal: ["g22", 28.45, 9.55, -1.5708] # mesa andres
+goal: ["g23", 28.05, 8.8, 0.785398] # silla andres1
+goal: ["g24", 28.85, 8.8, 2.35619] # silla andres2
+goal: ["g25", 30.35, 7.15, 2.35619] # mesa fernando
+goal: ["g26", 29.6, 7.55, -0.785398] # silla fernando 1
+goal: ["g27", 30.35, 7.9, -1.5708] # silla fernando 2
+goal: ["g28",7.7,3.2,-1.570796327] # servidores
+goal: ["g29",24.2,3.2,3.141592654] # taquillas
+goal: ["g30",2,7.15,1.5708] # sofa despacho mario 1
+goal: ["g31",3,7.15,1.5708] # sofa despacho mario 2
+
+#laboratorio 1
+goal: ["g32",2,5.6,3.141592654] # Alumno1
+goal: ["g33",2,4.6,3.141592654]
+goal: ["g34",2,3.6,3.141592654]
+goal: ["g35",3,5.6,3.141592654] # Alumno1
+goal: ["g36",3,4.6,3.141592654]
+goal: ["g37",3,3.6,3.141592654] # Alumno2
+goal: ["g38",4,5.6,3.141592654] # Alumno2
+goal: ["g39",4,4.6,3.141592654]
+goal: ["g40",4,3.6,3.141592654] # Alumno1
+goal: ["g41",5,5.6,3.141592654]
+goal: ["g42",5,4.6,3.141592654]
+goal: ["g43",5,3.6,3.141592654] # Alumno3
+goal: ["g44",6,5.6,3.141592654]
+goal: ["g45",6,4.6,3.141592654] # Alumno3
+goal: ["g46",6,3.6,3.141592654]
+
+#laboratorio 2
+goal: ["g47",10.6,5.6,3.141592654]
+goal: ["g48",10.6,4.6,3.141592654] # Alumno05
+goal: ["g49",10.6,3.6,3.141592654] # Alumno05
+goal: ["g50",11.6,5.6,3.141592654]
+goal: ["g51",11.6,4.6,3.141592654] # pedro
+goal: ["g52",11.6,3.6,3.141592654]
+goal: ["g53",12.6,5.6,3.141592654] # Fernando
+goal: ["g54",12.6,4.6,3.141592654] # Alumno06
+goal: ["g55",12.6,3.6,3.141592654]
+goal: ["g56",13.6,5.6,3.141592654] # Alumno04
+goal: ["g57",13.6,4.6,3.141592654]
+goal: ["g58",13.6,3.6,3.141592654] # Alumgo04
+goal: ["g59",14.6,5.6,3.141592654]
+goal: ["g60",14.6,4.6,3.141592654] 
+goal: ["g61",14.6,3.6,3.141592654] # Alumno06
+
+#seminario 
+goal: ["g62",17,5.6,3.141592654] # Alumnos
+goal: ["g63",17,4.6,3.141592654] # agustin
+goal: ["g64",17,3.6,3.141592654] # alvaro
+goal: ["g65",18,5.6,3.141592654] # miguel
+goal: ["g66",18,4.6,3.141592654] # carmen
+goal: ["g67",18,3.6,3.141592654] # Andres
+goal: ["g68",19,5.6,3.141592654] # mario
+goal: ["g69",19,4.6,3.141592654] # luis
+goal: ["g70",19,3.6,3.141592654] # ignacio
+goal: ["g71",20,5.6,3.141592654] # fran
+goal: ["g72",20,4.6,3.141592654] # Pedro
+goal: ["g73",20,3.6,3.141592654] # David
+goal: ["g74",21,5.6,3.141592654] # antonio
+goal: ["g75",21,4.6,3.141592654] # Fernando
+goal: ["g76",21,3.6,3.141592654] # felix
+
+#laboratorio 3
+goal: ["g77",26.8,5.6,0] # alvaro luis
+goal: ["g78",26.8,4.6,0] # alvaro agustin
+goal: ["g79",26.8,3.6,0] # alvaro 
+goal: ["g80",25.8,5.6,3.141592654]
+goal: ["g81",25.8,3.6,-1.5708] # alvaro ignacio
+
+#imus
+goal: ["g82",30.5,5.6,-1.5708] # antonio
+goal: ["g83",30.5,4.6, 1.5708] # 
+goal: ["g84",30.5,3.6, 3.141592654]
+goal: ["g85",29.5,5.6,-1.5708]
+goal: ["g86",29.5,4.6, 1.5708]
+goal: ["g87",28.5,5.6,-1.5708] # antonio
+goal: ["g88",28.5,4.6, 1.5708]
+goal: ["g89",28.5,3.6,0]
+
+human: ["Mario", 1.2, "g1","g6","g9","g12","g18","g21","g29","g30","g31","g68"]
+human: ["Alvaro", 0.6, "g4", "g29", "g64", "g77", "g78", "g79", "g81"]
+human: ["Carmen", 0.6, "g5", "g29", "g66", "g9", "g18", "g21"]
+human: ["Fran", 0.6, "g7", "g29", "g71"]
+human: ["Ignacio", 0.6, "g8", "g29", "g2", "g3", "g6", "g18", "g21", "g28", "g70", "g81", "g26", "g27"]
+human: ["Antonio", 0.6, "g10", "g29", "g74", "g82", "g87"]
+human: ["Felix", 0.6, "g13", "g29", "g76", "g23", "g24", "g26", "g27"]
+human: ["Luis", 0.6, "g16", "g29", "g2", "g3", "g6", "g9", "g21", "g69", "g77"]
+human: ["David", 1.2, "g17", "g29", "g2", "g3", "g6", "g9", "g21", "g26", "g27", "g73"]
+human: ["Miguel", 0.6, "g19", "g2", "g3", "g29", "g9", "g28", "g18", "g26", "g27", "g65"]
+human: ["Pedro", 0.6, "g20", "g29", "g26", "g72", "g51"]
+human: ["Andres", 0.6, "g22", "g29", "g14", "g15", "g67"]
+human: ["Fernando", 0.6, "g25", "g29", "g15", "g21", "g53", "g75"]
+human: ["Agustin", 0.6, "g2", "g3", "g29", "g63", "g6", "g9", "g18", "g21", "g78"]
+human: ["Alumno01", 0.6, "g32", "g35"]
+human: ["Alumno02", 0.6, "g37", "g38"]
+human: ["Alumno03", 0.6, "g43", "g45"]
+human: ["Alumno04", 0.6, "g56", "g58"]
+human: ["Alumno05", 0.6, "g48", "g49"]
+human: ["Alumno06", 0.6, "g54", "g61"]
+human: ["Alumno07", 0.6, "g2", "g3", "g6", "g9", "g12", "g15", "g18", "g21", "g23", "g24", "g26", "g27", "g62", "g80"]
+human: ["Alumno08", 0.6, "g2", "g3", "g6", "g9", "g12", "g15", "g18", "g21", "g23", "g24", "g26", "g27", "g62", "g80"]
+human: ["Alumno09", 0.6, "g2", "g3", "g6", "g9", "g12", "g15", "g18", "g21", "g23", "g24", "g26", "g27", "g62", "g80"]
+human: ["Alumno10", 0.6, "g2", "g3", "g6", "g9", "g12", "g15", "g18", "g21", "g23", "g24", "g26", "g27", "g62", "g80"]
+human: ["Alumno11", 0.6, "g83", "g84", "g85", "g86", "g88", "g89"]
+human: ["Alumno12", 0.6, "g83", "g84", "g85", "g86", "g88", "g89"]
