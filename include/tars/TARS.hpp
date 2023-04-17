@@ -73,7 +73,7 @@ Tars::~Tars() {
 inline 
 void Tars::update(double dt) {
 	for (unsigned i=0;i<agents.size();i++) {
-		if (agents[i]->getType()==HUMAN) {
+		if (agents[i]->getType()==HUMAN && !agents[i]->isStatic()) {
 			Human* human = (Human*)agents[i];
 			human->updatePath();
 		} 
@@ -82,7 +82,9 @@ void Tars::update(double dt) {
 		}
 	}
 	for (unsigned i=0;i<agents.size();i++) {
-		agents[i]->update(dt,map,agents);
+		if (!agents[i]->isStatic()) {
+			agents[i]->update(dt,map,agents);
+		}
 	}
 	for (unsigned i=0;i<agents.size();i++) {
 		if (agents[i]->getType()==ROBOT) {
@@ -159,6 +161,14 @@ void Tars::load(const std::string& fileName) {
 			params.n2 = getDouble(line);
 		} else if (line.find("relaxationTime:")==0) {
 			params.relaxationTime = getDouble(line);
+		} else if (line.find("timeInGoalMean:")==0) {
+			params.timeInGoalMean = getDouble(line);
+		} else if (line.find("timeInGoalSd:")==0) {
+			params.timeInGoalSd = getDouble(line);
+		} else if (line.find("timeInGoalInitMean:")==0) {
+			params.timeInGoalInitMean = getDouble(line);
+		} else if (line.find("timeInGoalInitSd:")==0) {
+			params.timeInGoalInitSd = getDouble(line);
 		} else if (line.find("map:")==0) {
 			map.load(workingDirectory,line);
 		} else if (line.find("robot:")==0) {
@@ -168,7 +178,13 @@ void Tars::load(const std::string& fileName) {
 				graph.createEdges(map);
 				firstHuman=false;
 			}
-			agents.push_back(new Human(line,graph,map));
+			agents.push_back(new Human(line,graph,map,false,params));
+		} else if (line.find("static_human:")==0) {
+			if (firstHuman) {
+				graph.createEdges(map);
+				firstHuman=false;
+			}
+			agents.push_back(new Human(line,graph,map,true,params));
 		} else if (line.find("node:")==0) {
 			graph.addNode(line);
 		} else if (line.find("goal:")==0) {

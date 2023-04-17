@@ -56,7 +56,11 @@ struct Parameters
 	  gamma(0.35),
 	  n1(2.0),
 	  n2(3.0),
-	  relaxationTime(0.5) {}
+	  relaxationTime(0.5),
+	  timeInGoalMean(60),
+	  timeInGoalSd(15),
+	  timeInGoalInitMean(10),
+	  timeInGoalInitSd(1) {}
 	double forceFactorDesired;
 	double forceFactorObstacle;
 	double forceSigmaObstacle;
@@ -67,6 +71,10 @@ struct Parameters
 	double n1;
 	double n2;
 	double relaxationTime;
+	double timeInGoalMean;
+	double timeInGoalSd;
+	double timeInGoalInitMean;
+	double timeInGoalInitSd;
 };
 
 enum Type {ROBOT, HUMAN};
@@ -91,7 +99,8 @@ public:
 	virtual void update(double dt,const Map& map,const std::vector<Agent*>& agents) = 0;
 	virtual Type getType() const = 0;
 	virtual const utils::Vector2d& getGoal() const = 0;
-	
+	virtual bool isStatic() const = 0;
+
 protected:	
 	#define PW(x) ((x)*(x))
 	void computeDesiredForce();
@@ -129,7 +138,7 @@ bool Agent::checkCollision(const Map& map,const std::vector<Agent*>& agents) con
 class Human : public Agent
 {
 public:
-	Human(const std::string& yaml, Graph& graph, Map& map);
+	Human(const std::string& yaml, Graph& graph, Map& map,bool is_static, const Parameters& params);
 	~Human() {}
 	void update(double dt, const Map& map,const std::vector<Agent*>& agents);
 	Type getType() const {return HUMAN;}
@@ -137,8 +146,11 @@ public:
 	const utils::Vector2d& getGoal() const {
 		return path.empty() ? graph->getNodes().at(goal) : graph->getNodes().at(path.front());
 	}
+	bool isStatic() const {return is_static;}
+
 	
 private:
+	bool is_static;
 	std::vector<std::string> goals;
 	std::list<std::string> path;
 	std::vector<Edge> edges;
@@ -173,6 +185,7 @@ public:
 	void updateSensors(const Map& map,const std::vector<Agent*>& agents);
 	void update(double dt, const Map& map, const std::vector<Agent*>& agents);
 	const std::vector<unsigned>& getAgentsDetected() const {return agentsDetected;}
+	bool isStatic() const {return false;}
 private:
 	utils::Vector2d goal;
 	double linVel;
@@ -294,8 +307,8 @@ void Human::update(double dt, const Map& map,const std::vector<Agent*>& agents) 
 
 
 inline
-Human::Human(const std::string& yaml, Graph& graph, Map& map)
-: graph(&graph), map(&map) {
+Human::Human(const std::string& yaml, Graph& graph, Map& map,bool is_static,const Parameters& params)
+: is_static(is_static), graph(&graph), map(&map) {
 	unsigned pos = 0;
 	unsigned length = substr(yaml,'\"','\"',pos);
 	name = yaml.substr(pos,length);
@@ -318,7 +331,7 @@ Human::Human(const std::string& yaml, Graph& graph, Map& map)
 	yaw = graph.getAngle(goal);
 	graph.select(goal);
 	timer0.reset();
-	timeInGoal = RANDOM(10,1);
+	timeInGoal = RANDOM(params.timeInGoalInitMean,params.timeInGoalInitSd);
 }
 
 inline
@@ -352,7 +365,7 @@ void Human::updatePath() {
 		if (path.empty()) {
 			edges = graph->getNeighbourhood(goal);
 			timer0.reset();
-			timeInGoal = RANDOM(60,15);
+			timeInGoal = RANDOM(params.timeInGoalMean,params.timeInGoalSd);
 		} else {
 			graph->aStar(current,goal,path);
 			path.pop_front();

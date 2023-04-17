@@ -12,6 +12,10 @@ gamma: 0.35
 n1: 2.0
 n2: 3.0
 relaxationTime: 0.5
+timeInGoalInitMean: 10
+timeInGoalInitSd: 1
+timeInGoalMean: 60
+timeInGoalSd: 15
 
 #robot: ["01", 0.6, 0.2, 720, 4.0, 2.0, 1, 1, 1.570796327]
 #robot: ["02", 0.6, 0.2, 720, 4.0, 2.0, 2, 1, 1.570796327]
@@ -174,7 +178,7 @@ goal: ["g87",28.5,5.6,-1.5708] # antonio
 goal: ["g88",28.5,4.6, 1.5708]
 goal: ["g89",28.5,3.6,0]
 
-human: ["Mario", 1.2, "g1","g6","g9","g12","g18","g21","g29","g30","g31","g68"]
+static_human: ["Mario", 1.2, "g1","g6","g9","g12","g18","g21","g29","g30","g31","g68"]
 human: ["Alvaro", 0.6, "g4", "g29", "g64", "g77", "g78", "g79", "g81"]
 human: ["Carmen", 0.6, "g5", "g29", "g66", "g9", "g18", "g21"]
 human: ["Fran", 0.6, "g7", "g29", "g71"]
